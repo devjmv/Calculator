@@ -1,6 +1,35 @@
-<script setup></script>
-<template>
+<script setup>
 
+const num1 = 3
+const num2 = 4
+
+function suma(num1, num2, operator) {
+  let total;
+  if (operator === '+')
+    total = num1 + num2
+  return total
+}
+function resta(num1, num2, operator) {
+  let total;
+  if (operator === '-')
+    total = num1 - num2
+  return total
+}
+function div(num1, num2, operator) {
+  let total;
+  if (operator === '*')
+    total = num1 * num2
+  return total
+}
+function mult(num1, num2, operator) {
+  let total;
+  if (operator === '/')
+    total = num1 / num2
+  return total
+}
+</script>
+
+<template>
   <div class="calculator card">
 
     <input type="text" class="calculator-screen z-depth-1" value="" disabled />
