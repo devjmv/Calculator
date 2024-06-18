@@ -1,60 +1,39 @@
 <template>
     <div class="calculator card">
 
-      <input type="text" class="calculator-screen z-depth-1" value="" disabled />
+      <div class="calculator-screen z-depth-1">{{current || '0'}}</div>
 
       <div class="calculator-keys">
 
-        <div class="display">{{current || '0'}}</div>
-    <div @click="clear" class="btn">C</div>
-    <div @click="sign" class="btn">+/-</div>
-    <div @click="percent" class="btn">%</div>
-    <div @click="divide" class="btn operator">÷</div>
-    <div @click="append('7')" class="btn">7</div>
-    <div @click="append('8')" class="btn">8</div>
-    <div @click="append('9')" class="btn">9</div>
-    <div @click="times" class="btn operator">x</div>
-    <div @click="append('4')" class="btn">4</div>
-    <div @click="append('5')" class="btn">5</div>
-    <div @click="append('6')" class="btn">6</div>
-    <div @click="minus" class="btn operator">-</div>
-    <div @click="append('1')" class="btn">1</div>
-    <div @click="append('2')" class="btn">2</div>
-    <div @click="append('3')" class="btn">3</div>
-    <div @click="add" class="btn operator">+</div>
-    <div @click="append('0')" class="btn zero">0</div>
-    <div @click="dot" class="btn">.</div>
-    <div @click="equal" class="btn operator">=</div>
+        <button @click="add" type="button" class="operator btn btn-info" value="+">+</button>
+        <button @click="minus" type="button" class="operator btn btn-info" value="-">-</button>
+        <button @click="times" type="button" class="operator btn btn-info" value="*">&times;</button>
+        <button @click="divide" type="button" class="operator btn btn-info" value="/">&divide;</button>
 
-        <button type="button" class="operator btn btn-info" value="+">+</button>
-        <button type="button" class="operator btn btn-info" value="-">-</button>
-        <button type="button" class="operator btn btn-info" value="*">&times;</button>
-        <button type="button" class="operator btn btn-info" value="/">&divide;</button>
-
-        <button type="button" value="7" class="btn btn-light">7</button>
-        <button type="button" value="8" class="btn btn-light">8</button>
-        <button type="button" value="9" class="btn btn-light">9</button>
+        <button @click="append('7')" type="button" value="7" class="btn btn-light">7</button>
+        <button @click="append('8')" type="button" value="8" class="btn btn-light">8</button>
+        <button @click="append('9')" type="button" value="9" class="btn btn-light">9</button>
 
 
-        <button type="button" value="4" class="btn btn-light">4</button>
-        <button type="button" value="5" class="btn btn-light">5</button>
-        <button type="button" value="6" class="btn btn-light">6</button>
+        <button @click="append('4')" type="button" value="4" class="btn btn-light">4</button>
+        <button @click="append('5')" type="button" value="5" class="btn btn-light">5</button>
+        <button @click="append('6')" type="button" value="6" class="btn btn-light">6</button>
 
 
-        <button type="button" value="1" class="btn btn-light">1</button>
-        <button type="button" value="2" class="btn btn-light">2</button>
-        <button type="button" value="3" class="btn btn-light">3</button>
+        <button @click="append('1')" type="button" value="1" class="btn btn-light">1</button>
+        <button @click="append('2')" type="button" value="2" class="btn btn-light">2</button>
+        <button @click="append('3')" type="button" value="3" class="btn btn-light">3</button>
 
 
-        <button type="button" value="0" class="btn btn-light">0</button>
-        <button type="button" class="decimal function btn btn-secondary" value=".">.</button>
-        <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear">AC</button>
+        <button @click="append('0')" type="button" value="0" class="btn btn-light">0</button>
+        <button @click="dot" type="button" class="decimal function btn btn-secondary" value=".">.</button>
+        <button @click="clear" type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear">C</button>
 
-        <button type="button" class="equal-sign operator btn btn-default" value="=">=</button>
+        <button @click="equal" type="button" class="equal-sign operator btn btn-default" value="=">=</button>
 
-        <button type="button" class="operator btn btn-info" value="MR">MR</button>
-        <button type="button" class="operator btn btn-info" value="M+">M+</button>
-        <button type="button" class="operator btn btn-info" value="MC">MC</button>
+        <button @click="memory" type="button" class="operator btn btn-info" value="MR">MR</button>
+        <button @click="memoryPluss" type="button" class="operator btn btn-info" value="M+">M+</button>
+        <button @click="memoryClear" type="button" class="operator btn btn-info" value="MC">MC</button>
 
       </div>
     </div>
@@ -119,6 +98,15 @@ export default {
         parseFloat(this.previous)
       )}`;
       this.previous = null;
+    },
+    memory() {
+      this.current = '';
+    },
+    memoryClear() {
+      this.current = '';
+    },
+    memoryPluss() {
+      this.current = '';
     }
   }
 }
